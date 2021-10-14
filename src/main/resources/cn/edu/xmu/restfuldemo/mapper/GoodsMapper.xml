@@ -1,6 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.xmu.restfuldemo.mapper.GoodsMapper">
-
+    <sql id="orders_list">
+        id,
+        customer_id,
+        shop_id,
+        order_sn,
+        pid,
+        consignee,
+        region_id,
+        address,
+        mobile,
+        message,
+        order_type,
+        freight_price,
+        coupon_id,
+        coupon_activity_id,
+        discount_price,
+        origin_price,
+        presale_id,
+        groupon_discount,
+        rebate_num,
+        confirm_time,
+        shipment_sn,
+        state,
+        substate,
+        be_deleted,
+        gmt_create,
+        gmt_modified,
+        groupon_id
+    </sql>
+    <sql id="order_item_list">
+        id,
+        order_id,
+        goods_sku_id,
+        quantity,
+        price,
+        discount,
+        name,
+        coupon_activity_id,
+        be_share_id,
+        gmt_create,
+        gmt_modified
+    </sql>
+    <sql id="goods_list">
+        id,
+        goods_spu_id,
+        sku_cn,
+        name,
+        original_price,
+        configuration,
+        weight,
+        image_url,
+        inventory,
+        detail,
+        disabled,
+        gmt_create,
+        gmt_modified,
+        state
+    </sql>
+    <select id="findOrders" parameterType="OrdersPo" resultType="OrdersPo">
+        SELECT
+        <include refid="orders_list"></include>
+        FROM lab2
+        WHERE
+        <if test="id!=null">and id = #{id} </if>
+    </select>
 </mapper>
 
