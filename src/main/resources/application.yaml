@@ -19,8 +19,8 @@ spring:
     password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
     initialization-mode: always
-    schema: classpath:schema.sql
-    data: classpath:data.sql
+    schema: classpath:lab2-3schema.sql
+    data: classpath:lab2-3data.sql
     druid:
       #初始化时建立物理连接的个数
       initial-size: 3
