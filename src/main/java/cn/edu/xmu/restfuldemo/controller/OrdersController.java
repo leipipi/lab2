@@ -1,6 +1,10 @@
 package cn.edu.xmu.restfuldemo.controller;
 
 
+import cn.edu.xmu.restfuldemo.bean.OrdersPo;
+
+=======
+
 import cn.edu.xmu.restfuldemo.bean.OrdersRetVo;
 import cn.edu.xmu.restfuldemo.bean.VoObject;
 import cn.edu.xmu.restfuldemo.util.ResponseCode;
@@ -29,6 +33,7 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 //返回的json会有中文，需要设置编码格式为UTF-8
 @RequestMapping(value = "/orders", produces = "application/json;charset=UTF-8")
+
 public class OrdersController {
     //使用指定类初始化日志对象，在日志输出的时候，可以打印出日志信息所在类
     private final Logger logger = LoggerFactory.getLogger(OrdersController.class);
