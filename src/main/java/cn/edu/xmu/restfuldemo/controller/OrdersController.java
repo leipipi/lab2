@@ -1,25 +1,20 @@
 package cn.edu.xmu.restfuldemo.controller;
 
 
-import cn.edu.xmu.restfuldemo.bean.OrdersPo;
+import cn.edu.xmu.restfuldemo.bean.*;
 
-=======
-
-import cn.edu.xmu.restfuldemo.bean.OrdersRetVo;
-import cn.edu.xmu.restfuldemo.bean.VoObject;
 import cn.edu.xmu.restfuldemo.util.ResponseCode;
 import cn.edu.xmu.restfuldemo.util.ResponseUtil;
 import cn.edu.xmu.restfuldemo.util.ReturnObject;
 import cn.edu.xmu.restfuldemo.service.OrdersService;
 import io.swagger.annotations.*;
-import org.mybatis.logging.Logger;
-import org.mybatis.logging.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -73,5 +68,20 @@ public class OrdersController {
     }
 
     //@ApiOperation(value = "创建一个订单对象",  produces="application/json;charset=UTF-8")
+    @PostMapping("")
+    public Object createOrders(@Validated @RequestBody OrdersVo ordersVo, BindingResult bindingResult){
+        httpServletResponse.setContentType("application/json;charset=UTF-8");
+        //不通过则报错
+        if (bindingResult.hasErrors()){
+            String err_msg = bindingResult.getFieldError().getDefaultMessage();
+            logger.info(err_msg);
+            httpServletResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            ReturnObject retObj = new ReturnObject(ResponseCode.FIELD_NOTVALID,err_msg);
+            return retObj;
+        }
 
+        Orders new_orders = ordersService.createOrders(ordersVo);
+        httpServletResponse.setStatus(HttpServletResponse.SC_CREATED);
+        return ResponseUtil.ok(new_orders);
+    }
 }
