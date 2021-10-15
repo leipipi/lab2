@@ -19,6 +19,10 @@ public class OrderItemVo {
 
     public OrderItem createOrderItem()
     {
-
+        OrderItem orderItem=new OrderItem();
+        orderItem.setskuId(this.skuId);
+        orderItem.setquantity(this.quantity);
+        orderItem.setcouponActId(this.couponActId);
+        return orderItem;
     }
 }
