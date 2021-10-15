@@ -22,12 +22,7 @@ public class OrdersService {
 
     @Autowired
     private OrderDao orderDao;
-    /**
-     * 获取某个商品信息，仅展示相关内容
-     *
-     * @param id 商品id
-     * @return 商品对象
-     */
+
     public ReturnObject<VoObject> findById(Integer id) {
         OrdersPo queryObj=new OrdersPo();
         queryObj.setId(id);
@@ -45,11 +40,7 @@ public class OrdersService {
         return retOrders ;
     }
 
-    /**
-     * 新增商品
-     * @param ordersVo 新商品信息
-     * @return 新商品
-     */
+
     public ReturnObject<VoObject> createOrders(OrdersVo ordersVo) {
         logger.info("createOrders: ordersVo = " + ordersVo);
         Orders orders = ordersVo.createOrders();
