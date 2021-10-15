@@ -41,7 +41,7 @@ public class OrderDao {
             Orders item=new Orders(ordersItem);
             if(withOrderItem)
             {
-                orderitemPo.setOrdersId(ordersItem.getId());
+                orderitemPo.setOrderId(ordersItem.getId());
                 List<OrderItemPo> orderItemPos=orderMapper.findOrderItem(orderitemPo);
                 List<OrderItem> orderitemList=new ArrayList<>(orderItemPos.size());
                 for (OrderItemPo orderItem : orderItemPos) {
@@ -51,35 +51,33 @@ public class OrderDao {
 //                   ---------------------------------------
                     orderitemList.add(orderitem);
                 }
-                item.setOrderItemList(orderitemList);
+                item.setOrderItems(orderitemList);
             }
-                retOrders.add(item);
-            }
-            logger.info("findOrders: retOrders = "+retOrders +", withOrderItem ="+withOrderItem);
-            return new ReturnObject<>(retOrders);
+            retOrders.add(item);
         }
+        logger.info("findOrders: retOrders = "+retOrders +", withOrderItem ="+withOrderItem);
+        return new ReturnObject<>(retOrders);
+    }
 
 
-        public  ReturnObject<Orders> createOrders(Orders orders)
+    public  ReturnObject<OrdersVo> createOrders(Orders orders)
+    {
+        OrdersPo ordersPo=orders.getOrdersPo();
+        int ret = orderMapper.createOrders(ordersPo);
+        if(orders.getOrderItemsList()!=null)
         {
-            OrdersPo ordersPo=orders.getOrdersPo();
-            int ret = orderMapper.createOrders(ordersPo);
-            if(orders.getOrderItemsList()!=null)
+            for(OrderItem orderItem:orders.getOrderItemsList())
             {
-                for(OrderItem orderItem:orders.getOrderItemsList())
-                {
-                    OrderItemPo orderitemPo = orderItem.getOrderItemPo();
-                    OrderItemPo.setskuId(0);
-                    OrderItemPo.setquantity(0);
-                    OrderItemPo.setcouponactId(0);
-                    ret=orderMapper.createOrderItem(orderitemPo);
-                }
+                OrderItemPo orderitemPo = orderItem.getOrderItemPo();
+                orderitemPo.setSkuId(0);
+                orderitemPo.setQuantity(0);
+                orderitemPo.setCouponActId(0);
+                ret=orderMapper.createOrderItem(orderitemPo);
             }
-            ReturnObject<Orders> returnObject=new ReturnObject<>(orders);
-            return returnObject;
         }
+        ReturnObject<OrdersVo> returnObject=new ReturnObject<>(orders);
+        return returnObject;
+    }
 
 
 }
-
-

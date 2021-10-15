@@ -17,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import static cn.edu.xmu.restfuldemo.util.Common.*;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -69,20 +70,19 @@ public class OrdersController {
     }
 
     //@ApiOperation(value = "创建一个订单对象",  produces="application/json;charset=UTF-8")
+    @ApiOperation(value = "新建订单",  produces="application/json")
+    @ApiImplicitParams({
+    })
+    @ApiResponses({
+    })
     @PostMapping("")
-    public Object createOrders(@Validated @RequestBody OrdersVo ordersVo, BindingResult bindingResult){
-        httpServletResponse.setContentType("application/json;charset=UTF-8");
-        //不通过则报错
-        if (bindingResult.hasErrors()){
-            String err_msg = bindingResult.getFieldError().getDefaultMessage();
-            logger.info(err_msg);
-            httpServletResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            ReturnObject retObj = new ReturnObject(ResponseCode.FIELD_NOTVALID,err_msg);
-            return retObj;
+    public Object createOrder(@Validated @RequestBody OrdersVo ordersVo, BindingResult bindingResult){
+        Object returnObject = processFieldErrors(bindingResult, httpServletResponse);
+        if (null != returnObject){
+            return returnObject;
         }
-
-        OrdersVo new_orders = ordersService.createOrders(ordersVo);
-        httpServletResponse.setStatus(HttpServletResponse.SC_CREATED);
-        return ResponseUtil.ok(new_orders);
+        ReturnObject<VoObject> returnObject1 = ordersService.createOrders(ordersVo);
+        httpServletResponse.setStatus(HttpStatus.CREATED.value());
+        return getRetObject(returnObject1);
     }
 }
