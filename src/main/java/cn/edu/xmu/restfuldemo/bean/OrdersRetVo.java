@@ -66,10 +66,10 @@ public class OrdersRetVo{
         this.grouponId=orders.getGrouponId();
         this.presaleId=orders.getPresaleId();
         this.shipmentSn=orders.getShipmentSn();
-        if(null!=orders.getOrderItems())
+        if(null!=orders.getOrderItemsList())
         {
-            List<OrderItemRetVo> orderItemRetVoList=new ArrayList<>(orders.getOrderItems().size());
-            for(OrderItem orderItem:orders.getOrderItems())
+            List<OrderItemRetVo> orderItemRetVoList=new ArrayList<>(orders.getOrderItemsList().size());
+            for(OrderItem orderItem:orders.getOrderItemsList())
             {
                 OrderItemRetVo orderItemRetVo=new OrderItemRetVo(orderItem);
                 orderItemRetVoList.add(orderItemRetVo);
