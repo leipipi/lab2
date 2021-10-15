@@ -60,7 +60,7 @@ public class OrderDao {
     }
 
 
-    public  ReturnObject<OrdersVo> createOrders(Orders orders)
+    public  ReturnObject<Orders> createOrders(Orders orders)
     {
         OrdersPo ordersPo=orders.getOrdersPo();
         int ret = orderMapper.createOrders(ordersPo);
@@ -75,7 +75,7 @@ public class OrderDao {
                 ret=orderMapper.createOrderItem(orderitemPo);
             }
         }
-        ReturnObject<OrdersVo> returnObject=new ReturnObject<>(orders);
+        ReturnObject<Orders> returnObject=new ReturnObject<>(orders);
         return returnObject;
     }
 
