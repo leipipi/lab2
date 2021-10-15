@@ -2,6 +2,7 @@ package cn.edu.xmu.restfuldemo.dao;
 
 import cn.edu.xmu.restfuldemo.mapper.OrderMapper;
 import cn.edu.xmu.restfuldemo.bean.*;
+import cn.edu.xmu.restfuldemo.model.*;
 //import cn.edu.xmu.restfuldemo.util.Common;
 import cn.edu.xmu.restfuldemo.model.Orders;
 import cn.edu.xmu.restfuldemo.util.ReturnObject;
