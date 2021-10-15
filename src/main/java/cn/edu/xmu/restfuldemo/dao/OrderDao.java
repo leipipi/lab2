@@ -72,7 +72,7 @@ public class OrderDao {
                     OrderItemPo.setskuId(0);
                     OrderItemPo.setquantity(0);
                     OrderItemPo.setcouponactId(0);
-                    ret=orderMapper.createOrderItem(OrderItemPo);
+                    ret=orderMapper.createOrderItem(orderitemPo);
                 }
             }
             ReturnObject<Orders> returnObject=new ReturnObject<>(orders);
