@@ -46,8 +46,8 @@ public class OrderDao {
                 List<OrderItem> orderitemList=new ArrayList<>(orderItemPos.size());
                 for (OrderItemPo orderItem : orderItemPos) {
                     OrderItem orderitem = new OrderItem(orderItem);
-//                  ----------------缺失一个函数-------------------
-                    product = getEffectivePrice(product);
+//                  -----------------------------------
+//                    product = getEffectivePrice(product);
 //                   ---------------------------------------
                     orderitemList.add(orderitem);
                 }
