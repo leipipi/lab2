@@ -59,12 +59,45 @@
         gmt_modified,
         state
     </sql>
-    <select id="findOrders" parameterType="OrdersPo" resultType="OrdersPo">
+    <select id="findById" parameterType="OrdersPo" resultType="orderMap">
         SELECT
         <include refid="orders_list"></include>
-        FROM lab2
+        FROM order
         WHERE
         <if test="id!=null">and id = #{id} </if>
     </select>
+    <resultMap id="orderMap" type="OrdersPo" autoMapping="true">
+        <id property="id" column="id"/>
+        <result property="order_sn" column="orderSn"/>
+        <result property="region_id" column="regionId"/>
+        <result property="order_type" column="orderType"/>
+        <result property="freight_price" column="freightPrice"/>
+        <result property="coupon_id" column="couponId"/>
+        <result property="discount_price" column="discountPrice"/>
+        <result property="origin_price" column="originPrice"/>
+        <result property="presale_id" column="presaleId"/>
+        <result property="groupon_id" column="grouponId"/>
+        <result property="rebate_num" column="rebateNum"/>
+        <result property="confirm_time" column="confirmTime"/>
+        <result property="shipment_sn" column="shipmentSn"/>
+        <result property="rebate_num" column="rebateNum"/>
+        <result property="gmt_create" column="gmtCreate"/>
+        <result property="gmt_modified" column="gmtModified"/>
+        <collection property="OrderItemList" ofType="cn.edu.xmu.restfuldemo.model.OrderItemPo">
+            <id property="id" column="id"/>
+            <result property="goods_sku_id" column="skuId"/>
+            <result property="order_id" column="orderId"/>
+            <result property="name" column="name"/>
+            <result property="quantity" column="quantity"/>
+            <result property="price" column="price"/>
+            <result property="discount" column="price"/>
+            <result property="coupon_activity_id" column="couponActId"/>
+            <result property="be_shared_id" column="beSharedId"/>
+        </collection>
+    </resultMap>
+    <insert id="creatOrders" parameterType="OrdersPo" keyProperty="id">
+        INSERT INTO order(consignee,region_id,address,mobile,message,coupon_id,presale_id,groupon_id)
+        VALUE (#{consignee},#{regioId},#{address},#{mobile},#{message},#{couponId},#{presaleId},#{grouponId})
+    </insert>
 </mapper>
 
