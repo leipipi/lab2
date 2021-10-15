@@ -3,7 +3,7 @@ package cn.edu.xmu.restfuldemo.dao;
 import cn.edu.xmu.restfuldemo.mapper.OrderMapper;
 import cn.edu.xmu.restfuldemo.bean.*;
 //import cn.edu.xmu.restfuldemo.util.Common;
-import cn.edu.xmu.restfuldemo.util.ResponseCode;
+import cn.edu.xmu.restfuldemo.model.Orders;
 import cn.edu.xmu.restfuldemo.util.ReturnObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +23,7 @@ public class OrderDao {
     private OrderMapper orderMapper;
 
 
-    public  ReturnObject<List<Orders>> findOrder(OrdersPo ordersPo,Boolean withOrderItem)
+    public  ReturnObject<List<Orders>> findOrder(OrdersPo ordersPo, Boolean withOrderItem)
     {
         logger.info("findOrders: OrdersPo =" + ordersPo+" withProduct = "+withOrderItem);
         List<OrdersPo> ordersPos = orderMapper.findOrders(ordersPo);

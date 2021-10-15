@@ -2,16 +2,13 @@ package cn.edu.xmu.restfuldemo.service;
 
 
 
-import cn.edu.xmu.restfuldemo.bean.Orders;
+import cn.edu.xmu.restfuldemo.model.Orders;
 import cn.edu.xmu.restfuldemo.bean.OrdersVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import cn.edu.xmu.restfuldemo.bean.VoObject;
 import cn.edu.xmu.restfuldemo.util.ReturnObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class OrdersService {
