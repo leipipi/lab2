@@ -55,7 +55,7 @@ public class OrdersVo {
             List<OrderItem> newOrderItem=new ArrayList<>(this.orderItemsList.size());
             for(OrderItemVo orderItemVo:this.orderItemsList)
             {
-                OrderItem orderItem=OrderItemVo.createOrderItem();
+                OrderItem orderItem=orderItemVo.createOrderItem();
                 newOrderItem.add(orderItem);
             }
             orders.setOrderItems(newOrderItem);
