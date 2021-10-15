@@ -59,7 +59,7 @@
         gmt_modified,
         state
     </sql>
-    <select id="findById" parameterType="OrdersPo" resultType="orderMap">
+    <select id="findOrders" parameterType="OrdersPo" resultType="orderMap">
         SELECT
         <include refid="orders_list"></include>
         FROM order
@@ -113,5 +113,9 @@
         WHERE
         <if test="id!=null">AND id = #{id} </if>
     </select>
+    <insert id="createOrderItem" keyProperty="id" parameterType="OrderItemPo">
+        INSERT INTO order_item(goods_sku_id,quantity,coupon_activity_id)
+        VALUE (#{skuId},#{quantity},#{couponActId})
+    </insert>
 </mapper>
 
