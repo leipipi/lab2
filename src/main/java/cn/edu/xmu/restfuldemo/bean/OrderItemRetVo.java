@@ -1,8 +1,10 @@
 package cn.edu.xmu.restfuldemo.bean;
 
+import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@Data
 public class OrderItemRetVo {
     private static Logger logger = LoggerFactory.getLogger(OrdersRetVo.class);
     private Integer skuId;
