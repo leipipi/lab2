@@ -8,7 +8,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Order_itemPo {
+public class OrderItemPo {
     private Integer id;
     private Integer order_id;
     private Integer goods_sku_id;

@@ -99,5 +99,19 @@
         INSERT INTO order(consignee,region_id,address,mobile,message,coupon_id,presale_id,groupon_id)
         VALUE (#{consignee},#{regioId},#{address},#{mobile},#{message},#{couponId},#{presaleId},#{grouponId})
     </insert>
+    <select id="findOrderItem" parameterType="OrderItemPo" resultType="OrderItemPo">
+        SELECT
+            id,
+            order_id,
+            quantity,
+            price,
+            discount,
+            name,
+            coupon_activity_id,
+            be_shared_id
+        FROM order_item
+        WHERE
+        <if test="id!=null">AND id = #{id} </if>
+    </select>
 </mapper>
 
