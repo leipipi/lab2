@@ -36,5 +36,5 @@ public class OrdersPo {
     private Date gmt_create;
     private Date gmt_modified;
     private Integer groupon_id;
-    private List<Order_itemPo> order_itemPoList;
+    private List<OrderItemPo> order_itemPoList;
 }
