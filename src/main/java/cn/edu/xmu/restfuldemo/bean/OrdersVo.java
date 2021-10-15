@@ -15,7 +15,7 @@ import java.util.List;
 public class OrdersVo {
     @ApiModelProperty(value = "订单明细")
     private List<OrderItemVo> orderItemsList;
-
+  
     @ApiModelProperty(value = "收货人")
     private String consignee;
 
