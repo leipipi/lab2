@@ -130,7 +130,11 @@ public class Orders implements VoObject{
 
     public List<OrderItem> getOrderItems(){return orderItemList;}
 
-    public void setOrderItems(List<OrderItem> orderItemList){this.orderItemList=orderItemList;}
+
+    private List<OrderItem> orderItemList;
+
+    public void setOrderItems(List<OrderItem> orderItemList){this.orderItemList=orderItemList};
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

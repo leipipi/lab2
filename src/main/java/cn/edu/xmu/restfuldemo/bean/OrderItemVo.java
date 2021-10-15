@@ -23,6 +23,7 @@ public class OrderItemVo {
         orderItem.setSkuId(this.skuId);
         orderItem.setQuantity(this.quantity);
         orderItem.setCouponActId(this.couponActId);
+
         return orderItem;
     }
 }

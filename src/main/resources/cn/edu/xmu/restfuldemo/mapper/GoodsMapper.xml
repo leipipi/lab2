@@ -64,7 +64,7 @@
         <include refid="orders_list"></include>
         FROM order
         WHERE
-        <if test="id!=null">and id = #{id} </if>
+        <if test="id!=null"> id = #{id} </if>
     </select>
     <resultMap id="orderMap" type="OrdersPo" autoMapping="true">
         <id property="id" column="id"/>
@@ -83,17 +83,17 @@
         <result property="rebate_num" column="rebateNum"/>
         <result property="gmt_create" column="gmtCreate"/>
         <result property="gmt_modified" column="gmtModified"/>
-        <collection property="OrderItemList" ofType="cn.edu.xmu.restfuldemo.model.OrderItemPo">
-            <id property="id" column="id"/>
-            <result property="goods_sku_id" column="skuId"/>
-            <result property="order_id" column="orderId"/>
-            <result property="name" column="name"/>
-            <result property="quantity" column="quantity"/>
-            <result property="price" column="price"/>
-            <result property="discount" column="price"/>
-            <result property="coupon_activity_id" column="couponActId"/>
-            <result property="be_shared_id" column="beSharedId"/>
-        </collection>
+<!--        <collection property="OrderItemList" ofType="cn.edu.xmu.restfuldemo.model.OrderItemPo">-->
+<!--            <id property="id" column="id"/>-->
+<!--            <result property="goods_sku_id" column="skuId"/>-->
+<!--            <result property="order_id" column="orderId"/>-->
+<!--            <result property="name" column="name"/>-->
+<!--            <result property="quantity" column="quantity"/>-->
+<!--            <result property="price" column="price"/>-->
+<!--            <result property="discount" column="price"/>-->
+<!--            <result property="coupon_activity_id" column="couponActId"/>-->
+<!--            <result property="be_shared_id" column="beSharedId"/>-->
+<!--        </collection>-->
     </resultMap>
     <insert id="creatOrders" parameterType="OrdersPo" keyProperty="id">
         INSERT INTO order(consignee,region_id,address,mobile,message,coupon_id,presale_id,groupon_id)

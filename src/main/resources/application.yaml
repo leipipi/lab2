@@ -14,8 +14,8 @@ spring:
         url: http://localhost:8081
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://172.16.3.5:3306/oomall_demo?serverTimezone=GMT%2B8
-    username: demouser
+    url: jdbc:mysql://172.16.3.5:3306/lab2?serverTimezone=GMT%2B8
+    username: user1
     password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
     initialization-mode: always
@@ -33,7 +33,7 @@ spring:
       #配置监控页面访问登录名及密码
       stat-view-servlet:
         login-username: admin
-        login-password: 123456
+        login-password: 670811
         enabled: true
         url-pattern: /druid/*
 
@@ -48,7 +48,7 @@ spring:
 
 mybatis:
   #domain对象的包
-  type-aliases-package: cn.edu.xmu.restfuldemo.model
+  type-aliases-package: cn.edu.xmu.restfuldemo.bean
   #mapper.xml所在的位置
   mapper-locations: classpath:cn.edu.xmu.restfuldemo.mapper/*.xml
   #自动将SQL中查出来的带下划线的字段，转换为驼峰标志，再去匹配类中的属性
