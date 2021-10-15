@@ -3,6 +3,7 @@ package cn.edu.xmu.restfuldemo.controller;
 
 import cn.edu.xmu.restfuldemo.bean.*;
 
+import cn.edu.xmu.restfuldemo.model.Orders;
 import cn.edu.xmu.restfuldemo.util.ResponseCode;
 import cn.edu.xmu.restfuldemo.util.ResponseUtil;
 import cn.edu.xmu.restfuldemo.util.ReturnObject;
