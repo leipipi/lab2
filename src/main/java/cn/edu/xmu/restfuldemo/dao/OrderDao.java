@@ -41,7 +41,7 @@ public class OrderDao {
             Orders item=new Orders(ordersItem);
             if(withOrderItem)
             {
-                orderitemPo.setOrdersId(ordersItem.getId());
+                orderitemPo.setOrderId(ordersItem.getId());
                 List<OrderItemPo> orderItemPos=orderMapper.findOrderItem(orderitemPo);
                 List<OrderItem> orderitemList=new ArrayList<>(orderItemPos.size());
                 for (OrderItemPo orderItem : orderItemPos) {
@@ -51,7 +51,7 @@ public class OrderDao {
 //                   ---------------------------------------
                     orderitemList.add(orderitem);
                 }
-                item.setOrderItemList(orderitemList);
+                item.setOrderItems(orderitemList);
             }
                 retOrders.add(item);
             }
@@ -69,9 +69,9 @@ public class OrderDao {
                 for(OrderItem orderItem:orders.getOrderItemsList())
                 {
                     OrderItemPo orderitemPo = orderItem.getOrderItemPo();
-                    OrderItemPo.setskuId(0);
-                    OrderItemPo.setquantity(0);
-                    OrderItemPo.setcouponactId(0);
+                    orderitemPo.setSkuId(0);
+                    orderitemPo.setQuantity(0);
+                    orderitemPo.setCouponActId(0);
                     ret=orderMapper.createOrderItem(orderitemPo);
                 }
             }
