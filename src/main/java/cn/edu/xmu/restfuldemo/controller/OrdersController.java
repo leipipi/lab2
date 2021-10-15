@@ -3,7 +3,7 @@ package cn.edu.xmu.restfuldemo.controller;
 
 import cn.edu.xmu.restfuldemo.bean.*;
 
-import cn.edu.xmu.restfuldemo.model.Orders;
+import cn.edu.xmu.restfuldemo.bean.OrdersVo;
 import cn.edu.xmu.restfuldemo.util.ResponseCode;
 import cn.edu.xmu.restfuldemo.util.ResponseUtil;
 import cn.edu.xmu.restfuldemo.util.ReturnObject;
@@ -81,7 +81,7 @@ public class OrdersController {
             return retObj;
         }
 
-        Orders new_orders = ordersService.createOrders(ordersVo);
+        OrdersVo new_orders = ordersService.createOrders(ordersVo);
         httpServletResponse.setStatus(HttpServletResponse.SC_CREATED);
         return ResponseUtil.ok(new_orders);
     }

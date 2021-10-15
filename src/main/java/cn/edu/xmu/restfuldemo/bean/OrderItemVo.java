@@ -1,4 +1,4 @@
-package cn.edu.xmu.restfuldemo.model;
+package cn.edu.xmu.restfuldemo.bean;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @ApiModel(description = "订单明细")
-public class OrderItems {
+public class OrderItemVo {
 
     @ApiModelProperty(value = "商品SKU id")
     private Integer skuId;
@@ -16,4 +16,9 @@ public class OrderItems {
 
     @ApiModelProperty(value = "优惠活动id")
     private Integer couponActId;
+
+    public OrderItem createOrderItem()
+    {
+
+    }
 }

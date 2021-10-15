@@ -2,7 +2,6 @@ package cn.edu.xmu.restfuldemo.service;
 
 
 
-import cn.edu.xmu.restfuldemo.model.Orders;
 import cn.edu.xmu.restfuldemo.bean.OrdersVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,8 +29,8 @@ public class OrdersService {
      * @param ordersVo 新商品信息
      * @return 新商品
      */
-    public Orders createOrders(OrdersVo ordersVo) {
-        Orders orders = new Orders();
+    public OrdersVo createOrders(OrdersVo ordersVo) {
+        OrdersVo orders = new OrdersVo();
         return orders;
     }
 

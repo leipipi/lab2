@@ -2,9 +2,8 @@ package cn.edu.xmu.restfuldemo.dao;
 
 import cn.edu.xmu.restfuldemo.mapper.OrderMapper;
 import cn.edu.xmu.restfuldemo.bean.*;
-import cn.edu.xmu.restfuldemo.model.*;
 //import cn.edu.xmu.restfuldemo.util.Common;
-import cn.edu.xmu.restfuldemo.model.Orders;
+import cn.edu.xmu.restfuldemo.bean.OrdersVo;
 import cn.edu.xmu.restfuldemo.util.ReturnObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,12 +23,12 @@ public class OrderDao {
     private OrderMapper orderMapper;
 
 
-    public  ReturnObject<List<Orders>> findOrder(OrdersPo ordersPo, Boolean withOrderItem)
+    public  ReturnObject<List<OrdersVo>> findOrder(OrdersPo ordersPo, Boolean withOrderItem)
     {
         logger.info("findOrders: OrdersPo =" + ordersPo+" withProduct = "+withOrderItem);
         List<OrdersPo> ordersPos = orderMapper.findOrders(ordersPo);
         logger.info("findOrders: OrdersPos =" + ordersPos);
-        List<Orders> retOrders=new ArrayList<>(ordersPos.size());
+        List<OrdersVo> retOrders=new ArrayList<>(ordersPos.size());
         OrderItemPo orderitemPo=null;
 
         if(withOrderItem)
@@ -39,7 +38,7 @@ public class OrderDao {
 
         for(OrdersPo ordersItem : ordersPos)
         {
-            Orders item=new Orders(ordersItem);
+            OrdersVo item=new OrdersVo(ordersItem);
             if(withOrderItem)
             {
                 orderitemPo.setOrdersId(ordersItem.getId());
@@ -61,7 +60,7 @@ public class OrderDao {
         }
 
 
-        public  ReturnObject<Orders> createOrders(Orders orders)
+        public  ReturnObject<OrdersVo> createOrders(OrdersVo orders)
         {
             OrdersPo ordersPo=orders.gotOrdersPo();
             int ret = orderMapper.createOrders(ordersPo);
@@ -76,7 +75,7 @@ public class OrderDao {
                     ret=orderMapper.createOrderItem(orderitemPo);
                 }
             }
-            ReturnObject<Orders> returnObject=new ReturnObject<>(orders);
+            ReturnObject<OrdersVo> returnObject=new ReturnObject<>(orders);
             return returnObject;
         }
 
