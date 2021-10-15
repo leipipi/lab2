@@ -13,7 +13,7 @@ import java.util.List;
 @ApiModel(description = "订单")
 public class OrdersVo {
     @ApiModelProperty(value = "订单明细")
-    private List<OrderItems> orderItems;
+    private List<OrderItemVo> orderItems;
 
     @ApiModelProperty(value = "收货人")
     private String consignee;

@@ -2,6 +2,7 @@ package cn.edu.xmu.restfuldemo.bean;
 
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class OrdersRetVo{
     private Integer grouponId;
     private Integer presaleId;
     private String shipmentSn;
-    private List<OrderItemPo> orderItems;
+    private List<OrderItemRetVo> orderItems;
 
     OrdersRetVo(Orders orders){
         this.id=orders.getId();
@@ -65,7 +66,16 @@ public class OrdersRetVo{
         this.grouponId=orders.getGrouponId();
         this.presaleId=orders.getPresaleId();
         this.shipmentSn=orders.getShipmentSn();
-        this.orderItems=orders.getOrderItems();
+        if(null!=orders.getOrderItems())
+        {
+            List<OrderItemRetVo> orderItemRetVoList=new ArrayList<>(orders.getOrderItems().size());
+            for(OrderItem orderItem:orders.getOrderItems())
+            {
+                OrderItemRetVo orderItemRetVo=new OrderItemRetVo(orderItem);
+                orderItemRetVoList.add(orderItemRetVo);
+            }
+            this.orderItems=orderItemRetVoList;
+        }
     }
 
 

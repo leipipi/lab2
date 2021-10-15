@@ -14,8 +14,6 @@ public class Orders implements VoObject{
 
     private OrdersPo ordersPo;
 
-    private String shipment_sn;
-
     public Orders(){ordersPo=new OrdersPo();}
 
     public Orders(OrdersPo ordersPo){this.ordersPo=ordersPo;}
@@ -40,7 +38,7 @@ public class Orders implements VoObject{
 
     public void setPid(Integer pid){ordersPo.setPid(pid);}
 
-    public String getConsignee(){return ordersPo.getConsignee();};
+    public String getConsignee(){return ordersPo.getConsignee();}
 
     public void setConsignee(String consignee){ordersPo.setConsignee(consignee);}
 
@@ -48,7 +46,7 @@ public class Orders implements VoObject{
 
     public void setRegionId(Integer regionId){ordersPo.setRegion_id(regionId);}
 
-    public String getAddress(){return ordersPo.getAddress();};
+    public String getAddress(){return ordersPo.getAddress();}
 
     public void setAddress(String address){ordersPo.setAddress(address);}
 
@@ -128,9 +126,11 @@ public class Orders implements VoObject{
 
     public void setGrouponId(Integer grouponId){ordersPo.setGroupon_id(grouponId);}
 
-    public List<OrderItemPo> getOrderItems(){return ordersPo.getOrder_itemPoList();}
+    private List<OrderItem> orderItemList;
 
-    public void setOrderItems(List<OrderItemPo> orderItemList){ordersPo.setOrder_itemPoList(orderItemList);}
+    public List<OrderItem> getOrderItems(){return orderItemList;}
+
+    public void setOrderItems(List<OrderItem> orderItemList){this.orderItemList=orderItemList;}
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

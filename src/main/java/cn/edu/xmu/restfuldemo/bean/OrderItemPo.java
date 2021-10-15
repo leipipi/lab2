@@ -10,14 +10,14 @@ import java.util.Date;
 @AllArgsConstructor
 public class OrderItemPo {
     private Integer id;
-    private Integer order_id;
-    private Integer goods_sku_id;
+    private Integer orderId;
+    private Integer skuId;
     private Integer quantity;
     private Integer price;
     private Integer discount;
     private String name;
-    private Integer coupon_activity_id;
-    private Integer be_share_id;
-    private Date gmt_create;
-    private Date gmt_modified;
+    private Integer couponActId;
+    private Integer beShareId;
+    private Date gmtCreate;
+    private Date gmtModified;
 }
