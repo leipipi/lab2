@@ -10,11 +10,16 @@ public class OrderItem implements VoObject{
     public Object createVo(){
         return new OrderItemRetVo(this);
     }
+
     public OrderItem(){this.orderItemPo=new OrderItemPo();}
+
     public OrderItem(OrderItemPo orderItemPo)
     {
         this.orderItemPo=orderItemPo;
     }
+
+
+
     private OrderItemPo orderItemPo;
 
     public Integer getId(){return orderItemPo.getId();}
@@ -60,5 +65,7 @@ public class OrderItem implements VoObject{
     public Date getGmtModified(){return orderItemPo.getGmtModified();}
 
     public void setGmtModified(Date gmtModified){orderItemPo.setGmtModified(gmtModified);}
+
+    public OrderItemPo getOrderItemPo(){return this.orderItemPo;}
 
 }

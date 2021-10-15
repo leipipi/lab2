@@ -23,12 +23,12 @@ public class OrderDao {
     private OrderMapper orderMapper;
 
 
-    public  ReturnObject<List<OrdersVo>> findOrder(OrdersPo ordersPo, Boolean withOrderItem)
+    public  ReturnObject<List<Orders>> findOrder(OrdersPo ordersPo, Boolean withOrderItem)
     {
         logger.info("findOrders: OrdersPo =" + ordersPo+" withProduct = "+withOrderItem);
         List<OrdersPo> ordersPos = orderMapper.findOrders(ordersPo);
         logger.info("findOrders: OrdersPos =" + ordersPos);
-        List<OrdersVo> retOrders=new ArrayList<>(ordersPos.size());
+        List<Orders> retOrders=new ArrayList<>(ordersPos.size());
         OrderItemPo orderitemPo=null;
 
         if(withOrderItem)
@@ -38,7 +38,7 @@ public class OrderDao {
 
         for(OrdersPo ordersItem : ordersPos)
         {
-            OrdersVo item=new OrdersVo(ordersItem);
+            Orders item=new Orders(ordersItem);
             if(withOrderItem)
             {
                 orderitemPo.setOrdersId(ordersItem.getId());
@@ -60,15 +60,15 @@ public class OrderDao {
         }
 
 
-        public  ReturnObject<OrdersVo> createOrders(OrdersVo orders)
+        public  ReturnObject<OrdersVo> createOrders(Orders orders)
         {
-            OrdersPo ordersPo=orders.gotOrdersPo();
+            OrdersPo ordersPo=orders.getOrdersPo();
             int ret = orderMapper.createOrders(ordersPo);
-            if(orders.getOrderItemList()!=null)
+            if(orders.getOrderItemsList()!=null)
             {
-                for(OrderItem orderItem:orders.getOrderItemList())
+                for(OrderItem orderItem:orders.getOrderItemsList())
                 {
-                    OrderItemPo orderitemPo = orderitem.getOrderItemPo();
+                    OrderItemPo orderitemPo = orderItem.getOrderItemPo();
                     OrderItemPo.setskuId(0);
                     OrderItemPo.setquantity(0);
                     OrderItemPo.setcouponactId(0);

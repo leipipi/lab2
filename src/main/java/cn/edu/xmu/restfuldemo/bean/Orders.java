@@ -128,7 +128,7 @@ public class Orders implements VoObject{
 
     private List<OrderItem> orderItemList;
 
-    public List<OrderItem> getOrderItems(){return orderItemList;}
+    public List<OrderItem> getOrderItemsList(){return orderItemList;}
 
 
     public void setOrderItems(List<OrderItem> orderItemList){this.orderItemList=orderItemList;}
