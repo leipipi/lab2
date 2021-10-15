@@ -52,7 +52,7 @@ public class OrderDao {
                     orderitemList.add(orderitem);
                 }
                 item.setOrderItemList(orderitemList);
-                }
+            }
                 retOrders.add(item);
             }
             logger.info("findOrders: retOrders = "+retOrders +", withOrderItem ="+withOrderItem);
@@ -60,6 +60,26 @@ public class OrderDao {
         }
 
 
-    }
+        public  ReturnObject<Orders> createOrders(Orders orders)
+        {
+            OrdersPo ordersPo=orders.gotOrdersPo();
+            int ret = orderMapper.createOrders(ordersPo);
+            if(orders.getOrderItemList()!=null)
+            {
+                for(OrderItem orderItem:orders.getOrderItemList())
+                {
+                    OrderItemPo orderitemPo = orderitem.getOrderItemPo();
+                    OrderItemPo.setskuId(0);
+                    OrderItemPo.setquantity(0);
+                    OrderItemPo.setcouponactId(0);
+                    ret=orderMapper.createOrderItem(OrderItemPo);
+                }
+            }
+            ReturnObject<Orders> returnObject=new ReturnObject<>(orders);
+            return returnObject;
+        }
+
 
 }
+
+
