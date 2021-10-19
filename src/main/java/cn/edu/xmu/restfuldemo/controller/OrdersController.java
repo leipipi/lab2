@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
+
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,13 +25,12 @@ import javax.servlet.http.HttpServletResponse;
  * 订单控制器
  * @author Yixuan Chen
  */
-@Api(value = "订单API",tags = "订单API")
 
 //OrdersController是一个RESTful控制类，接收json格式，返回json格式
-@RestController
 //返回的json会有中文，需要设置编码格式为UTF-8
+@Api(value = "订单API",tags = "订单API")
+@RestController
 @RequestMapping(value = "/orders", produces = "application/json;charset=UTF-8")
-
 public class OrdersController {
     //使用指定类初始化日志对象，在日志输出的时候，可以打印出日志信息所在类
     private final Logger logger = LoggerFactory.getLogger(OrdersController.class);
@@ -53,6 +53,7 @@ public class OrdersController {
     })
     @GetMapping("{id}")
     public Object getOrdersById(@PathVariable("id") Integer id){
+
         ReturnObject<VoObject> returnObject =  ordersService.findById(id);
         ResponseCode code = returnObject.getCode();
         switch (code){

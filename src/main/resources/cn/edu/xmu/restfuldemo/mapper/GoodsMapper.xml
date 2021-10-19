@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.edu.xmu.restfuldemo.mapper.GoodsMapper">
+<mapper namespace="cn.edu.xmu.restfuldemo.mapper.OrderMapper">
     <sql id="orders_list">
         id,
         customer_id,
@@ -23,7 +23,7 @@
         rebate_num,
         confirm_time,
         shipment_sn,
-        state,
+        `state`,
         substate,
         be_deleted,
         gmt_create,
@@ -37,7 +37,7 @@
         quantity,
         price,
         discount,
-        name,
+        `name`,
         coupon_activity_id,
         be_share_id,
         gmt_create,
@@ -47,7 +47,7 @@
         id,
         goods_spu_id,
         sku_cn,
-        name,
+        `name`,
         original_price,
         configuration,
         weight,
@@ -57,12 +57,12 @@
         disabled,
         gmt_create,
         gmt_modified,
-        state
+        `state`
     </sql>
     <select id="findOrders" parameterType="OrdersPo" resultType="orderMap">
         SELECT
         <include refid="orders_list"></include>
-        FROM order
+        FROM orders
         WHERE
         <if test="id!=null"> id = #{id} </if>
     </select>
