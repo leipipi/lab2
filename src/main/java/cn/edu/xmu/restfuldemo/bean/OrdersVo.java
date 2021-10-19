@@ -4,10 +4,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
-
 import java.util.List;
 
 /*
@@ -18,6 +18,7 @@ import java.util.List;
 public class OrdersVo {
     @ApiModelProperty(value = "订单明细")
     private List<OrderItemVo> orderItemsList;
+  
 
     @ApiModelProperty(value = "收货人")
     private String consignee;
@@ -65,6 +66,7 @@ public class OrdersVo {
             }
             orders.setOrderItems(newOrderItemList);
         }
+
 
         return orders;
     }
