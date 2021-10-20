@@ -26,7 +26,9 @@ public class OrderDao {
     public  ReturnObject<List<Orders>> findOrder(OrdersPo ordersPo, Boolean withOrderItem)
     {
         logger.info("findOrders: OrdersPo =" + ordersPo+" withProduct = "+withOrderItem);
+        logger.info("start to process orderMapper");
         List<OrdersPo> ordersPos = orderMapper.findOrders(ordersPo);
+        logger.info("finish processing orderMapper");
         logger.info("findOrders: OrdersPos =" + ordersPos);
         List<Orders> retOrders=new ArrayList<>(ordersPos.size());
         OrderItemPo orderitemPo=null;

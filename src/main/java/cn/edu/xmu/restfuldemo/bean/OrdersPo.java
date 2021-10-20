@@ -1,6 +1,7 @@
 package cn.edu.xmu.restfuldemo.bean;
 
 import lombok.*;
+import org.apache.ibatis.type.Alias;
 
 import java.util.Date;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Alias("OrdersPo")
 public class OrdersPo {
     private Integer id;
     private Integer customer_id;

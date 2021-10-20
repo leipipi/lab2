@@ -1,3 +1,4 @@
+
 --
 -- Table structure for table `goods_sku`
 --

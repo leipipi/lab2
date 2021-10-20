@@ -53,7 +53,6 @@ public class OrdersController {
     })
     @GetMapping("{id}")
     public Object getOrdersById(@PathVariable("id") Integer id){
-
         ReturnObject<VoObject> returnObject =  ordersService.findById(id);
         ResponseCode code = returnObject.getCode();
         switch (code){
