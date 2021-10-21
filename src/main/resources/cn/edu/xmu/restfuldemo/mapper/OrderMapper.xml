@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.xmu.restfuldemo.mapper.OrderMapper">
+    <sql id="orders_list">
+        id,
+        customer_id,
+        shop_id,
+        order_sn,
+        pid,
+        consignee,
+        region_id,
+        address,
+        mobile,
+        message,
+        order_type,
+        freight_price,
+        coupon_id,
+        coupon_activity_id,
+        discount_price,
+        origin_price,
+        presale_id,
+        groupon_discount,
+        rebate_num,
+        confirm_time,
+        shipment_sn,
+        `state`,
+        substate,
+        be_deleted,
+        gmt_create,
+        gmt_modified,
+        groupon_id
+    </sql>
+    <sql id="order_item_list">
+        id,
+        order_id,
+        goods_sku_id,
+        quantity,
+        price,
+        discount,
+        `name`,
+        coupon_activity_id,
+        be_share_id,
+        gmt_create,
+        gmt_modified
+    </sql>
+    <sql id="goods_list">
+        id,
+        goods_spu_id,
+        sku_cn,
+        `name`,
+        original_price,
+        configuration,
+        weight,
+        image_url,
+        inventory,
+        detail,
+        disabled,
+        gmt_create,
+        gmt_modified,
+        `state`
+    </sql>
+    <select id="findOrders" parameterType="OrdersPo" resultType="OrdersPo">
+        SELECT
+        <include refid="orders_list"/>
+        FROM orders
+        WHERE
+        <if test="id!=null"> id = #{id} </if>
+    </select>
+    <resultMap id="orderMap" type="OrdersPo" autoMapping="true">
+        <id property="id" column="id"/>
+        <result property="order_sn" column="orderSn"/>
+        <result property="region_id" column="regionId"/>
+        <result property="order_type" column="orderType"/>
+        <result property="freight_price" column="freightPrice"/>
+        <result property="coupon_id" column="couponId"/>
+        <result property="discount_price" column="discountPrice"/>
+        <result property="origin_price" column="originPrice"/>
+        <result property="presale_id" column="presaleId"/>
+        <result property="groupon_id" column="grouponId"/>
+        <result property="rebate_num" column="rebateNum"/>
+        <result property="confirm_time" column="confirmTime"/>
+        <result property="shipment_sn" column="shipmentSn"/>
+        <result property="rebate_num" column="rebateNum"/>
+        <result property="gmt_create" column="gmtCreate"/>
+        <result property="gmt_modified" column="gmtModified"/>
+<!--        <collection property="OrderItemList" ofType="cn.edu.xmu.restfuldemo.model.OrderItemPo">-->
+<!--            <id property="id" column="id"/>-->
+<!--            <result property="goods_sku_id" column="skuId"/>-->
+<!--            <result property="order_id" column="orderId"/>-->
+<!--            <result property="name" column="name"/>-->
+<!--            <result property="quantity" column="quantity"/>-->
+<!--            <result property="price" column="price"/>-->
+<!--            <result property="discount" column="price"/>-->
+<!--            <result property="coupon_activity_id" column="couponActId"/>-->
+<!--            <result property="be_shared_id" column="beSharedId"/>-->
+<!--        </collection>-->
+    </resultMap>
+    <insert id="creatOrders" parameterType="OrdersPo" keyProperty="id">
+        INSERT INTO order(consignee,region_id,address,mobile,message,coupon_id,presale_id,groupon_id)
+        VALUE (#{consignee},#{regioId},#{address},#{mobile},#{message},#{couponId},#{presaleId},#{grouponId})
+    </insert>
+    <select id="findOrderItem" parameterType="OrderItemPo" resultType="OrderItemPo">
+        SELECT
+            id,
+            order_id,
+            quantity,
+            price,
+            discount,
+            name,
+            coupon_activity_id,
+            be_share_id
+        FROM order_item
+        WHERE
+        <if test="orderId!=null">order_id = #{orderId} </if>
+    </select>
+    <insert id="createOrderItem" keyProperty="id" parameterType="OrderItemPo">
+        INSERT INTO order_item(goods_sku_id,quantity,coupon_activity_id)
+        VALUE (#{skuId},#{quantity},#{couponActId})
+    </insert>
+</mapper>
+
