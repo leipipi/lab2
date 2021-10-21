@@ -16,7 +16,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/lab2?serverTimezone=GMT%2B8
     username: root
-    password: cyx2000!
+    password:
     type: com.alibaba.druid.pool.DruidDataSource
     initialization-mode: always
     schema: classpath:lab2-3schema.sql
@@ -55,5 +55,5 @@ mybatis:
   configuration:
     #输出产生的SQL
     #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-    map-underscore-to-camel-case: true
+    map-underscore-to-camel-case: false
 

@@ -110,9 +110,9 @@ public class Orders implements VoObject{
 
     public void setSubState(Integer subState){ordersPo.setSubstate(subState);}
 
-    public Integer getBeDelated(){return ordersPo.getBe_delated();}
+    public Integer getBeDeleted(){return ordersPo.getBe_deleted();}
 
-    public void setBeDelated(Integer beDelated){ordersPo.setBe_delated(beDelated);}
+    public void setBeDeleted(Integer beDeleted){ordersPo.setBe_deleted(beDeleted);}
 
     public Date getGmtCreate(){return ordersPo.getGmt_create();}
 

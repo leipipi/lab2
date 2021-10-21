@@ -34,7 +34,7 @@ public class OrdersPo {
     private String shipment_sn;
     private Integer state;
     private Integer substate;
-    private Integer be_delated;
+    private Integer be_deleted;
     private Date gmt_create;
     private Date gmt_modified;
     private Integer groupon_id;
